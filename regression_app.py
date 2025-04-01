@@ -19,3 +19,8 @@ df = pd.read_csv('data/final.csv')
 st.write('The dataset is loaded. The first five and last five records displayed below:')
 st.write(df.head())
 st.write(df.tail())
+
+
+rows_count = df.shape[0]
+columns_count = df.shape[1]
+st.write(f'The dataset contains: \nRows: {rows_count}\nColumns: {columns_count}')
