@@ -16,5 +16,6 @@ st.write('This app builds a machine learning model')
 df = pd.read_csv('data/final.csv')
 
 # display the first five rows of the dataset in the app
-st.write('The dataset is loaded. The first five records displayed below:')
+st.write('The dataset is loaded. The first five and last five records displayed below:')
 st.write(df.head())
+st.write(df.tail())
