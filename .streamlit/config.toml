@@ -1,6 +1,14 @@
+# [theme]
+# primaryColor="#F63366"
+# backgroundColor="#FFFFFF"
+# secondaryBackgroundColor="#F0F2F6"
+# textColor="#262730"
+# font="sans serif"
+
 [theme]
-primaryColor="#F63366"
-backgroundColor="#FFFFFF"
-secondaryBackgroundColor="#F0F2F6"
-textColor="#262730"
-font="sans serif"
+primaryColor = "#d0e8f2" # light cyan
+backgroundColor = "#fcf8ec" # beige
+secondaryBackgroundColor = "#79a3b1" # dark cyan
+textColor = "#000" # dark gray
+font = "sans serif"
+

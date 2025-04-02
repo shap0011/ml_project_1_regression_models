@@ -7,11 +7,12 @@ import numpy as np
 
 
 # set the title of the Streamlit app
-st.title('Project 1. Regression Models')
-
 # display a brief description of the app
-st.write('This app builds a machine learning model')
+st.markdown("""<h1 style='color: darkblue;'>Project 1. Regression Models</h1>
+            <p>This app builds a machine learning regression model</p><hr>""", unsafe_allow_html=True)
 
+# add subheader
+st.subheader("Data preview")
 # load the dataset from a CSV file located in the 'data' folder
 df = pd.read_csv('data/final.csv')
 
@@ -20,7 +21,26 @@ st.write('The dataset is loaded. The first five and last five records displayed 
 st.write(df.head())
 st.write(df.tail())
 
-
+# create variables for rows and columns counts
 rows_count = df.shape[0]
 columns_count = df.shape[1]
-st.write(f'The dataset contains: \nRows: {rows_count}\nColumns: {columns_count}')
+# display dataset shape
+st.markdown(f"""
+            The dataset contains:
+             - **Rows:** { rows_count }
+             - **Columns:** { columns_count }
+             <hr>
+            """, unsafe_allow_html=True)
+
+# add subheader
+st.subheader("Linear Regression Model")
+
+# add a short description
+st.markdown("""
+            Prepare the data for training a **Linear Regression model** 
+            by separating the input features ( ***x*** ) from the target variable ( ***y*** ), 
+            which is the house price.
+            """)
+
+# import the LinearRegression model
+from sklearn.linear_model import LinearRegression
