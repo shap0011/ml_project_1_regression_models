@@ -123,3 +123,22 @@ y_train_head = y_train.head()
 st.markdown("##### First 5 Values of Training Target (y_train)")
 # show table
 st.dataframe(y_train_head)
+
+# display the shape (rows, columns) of training and test datasets
+# display the section title
+st.markdown("##### Dataset Shapes: Training and Test Sets")
+
+# get the shape (row count, column count) of each dataset
+# input features for training
+x_train_shape = x_train.shape
+# target variable for training
+y_train_shape = y_train.shape
+# input features for testing
+x_test_shape = x_test.shape
+# target variable for testing
+y_test_shape = y_test.shape
+
+st.markdown(f"Dimensions of input features for training `x_train`: {x_train_shape}")
+st.markdown(f"Dimensions of target variable for training `y_train`: {y_train_shape}")
+st.markdown(f"Dimensions of input features for testing `x_test`: {x_test_shape}")
+st.markdown(f"Dimensions of target variable for testing `y_test`: {y_test_shape}")
