@@ -8,7 +8,7 @@ import numpy as np
 
 # set the title of the Streamlit app
 # display a brief description of the app
-st.markdown("""<h1 style='color: darkblue;'>Project 1. Regression Models</h1>
+st.markdown("""<h1 style='color: blue;'>Project 1. Regression Models</h1>
             <p>This app builds a machine learning regression model</p><hr>""", unsafe_allow_html=True)
 
 # add subheader
@@ -44,3 +44,27 @@ st.markdown("""
 
 # import the LinearRegression model
 from sklearn.linear_model import LinearRegression
+
+# separate the input features (all columns except 'price')
+x = df.drop('price', axis=1)
+
+# store the target variable (price) in y
+y = df['price']
+
+
+# display the first few rows of the input features
+input_features_top_5 = x.head()
+# display text
+st.markdown("""
+            <p>First five row of input features</p>, unsafe_allow_html=True
+            
+            """)
+
+
+
+# display the first few values of the target variable
+target_variable_top_5 = y.head()
+# display text
+st.markdown("""
+            <p>First few values of the target variable</p>, unsafe_allow_html=True
+            """)
