@@ -104,4 +104,22 @@ x_train_bungalow_stratified = x_train.property_type_Bunglow.value_counts()
 with col2:
     st.markdown("##### After Stratified Split")   # add a subheader
     st.dataframe(x_train_bungalow_stratified)    # display the stratified split distribution
-    
+
+# display the section header    
+st.markdown("#### Preview of Training Features and Target Variable")
+
+# display the first five rows of the training input features (x_train)
+# get top 5 rows from training feature set
+x_train_head = x_train.head()
+# add a table title
+st.markdown("##### First 5 Rows of Training Features (x_train)")
+# show table
+st.dataframe(x_train_head)
+
+# display the first five rows of the training target variable (y_train)
+# get top 5 values from training target variable
+y_train_head = y_train.head()
+# add a table title
+st.markdown("##### First 5 Values of Training Target (y_train)")
+# show table
+st.dataframe(y_train_head)
