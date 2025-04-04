@@ -4,12 +4,16 @@ import streamlit as st
 import pandas as pd
 #import numpy as np for numerical computing
 import numpy as np
+import sklearn
+
 
 
 # set the title of the Streamlit app
 # display a brief description of the app
 st.markdown("""<h1 style='color: #94cbe1;'>Project 1. Regression Models</h1>
             <p>This app builds a machine learning regression model</p><hr>""", unsafe_allow_html=True)
+
+# st.write(sklearn.__version__)
 
 # add subheader
 st.subheader("Data preview")
@@ -142,3 +146,102 @@ st.markdown(f"Dimensions of input features for training `x_train`: {x_train_shap
 st.markdown(f"Dimensions of target variable for training `y_train`: {y_train_shape}")
 st.markdown(f"Dimensions of input features for testing `x_test`: {x_test_shape}")
 st.markdown(f"Dimensions of target variable for testing `y_test`: {y_test_shape}")
+
+# training the Linear Regression Model
+# display the section title
+st.markdown("##### Train the Linear Regression Model")
+
+# create an instance of the LinearRegression model
+model = LinearRegression()
+# fit the model using the training data (input features and target)
+lrmodel = model.fit(x_train, y_train)
+
+# Access the learned coefficients (weights) of the trained model
+lrmodel_coef_ = lrmodel.coef_
+
+# display the learned coefficients
+st.markdown(f"""
+            Learned coefficients (weights) of the trained model:
+            <br>
+            `{ lrmodel_coef_ }`""", unsafe_allow_html=True)
+
+# Access the model's intercept (bias term)
+lrmodel_intercept_ = lrmodel.intercept_
+
+# display the model's intercept
+st.markdown(f"""
+            Model's intercept:
+            <br>
+            `{ lrmodel_intercept_ }`
+            """, unsafe_allow_html=True)
+
+# preview the first row of the training features which is used for demonstration/prediction
+x_train_head_first = x_train.head(1)
+
+# display the first row of input features in the app
+st.markdown("###### First Row of Training Features (x_train)")
+st.dataframe(x_train_head_first)
+
+# making predictions and evaluating model performance
+# display the section title
+st.markdown("### Make Predictions and Evaluate Model Performance")
+
+# predict house prices on the training set using the trained model
+train_pred = lrmodel.predict(x_train)
+
+# display predicted vs actual values
+# display predicted values
+st.markdown(f"**Predicted values (first 10):** `{train_pred[:10].tolist()}`")
+# display actual values
+st.markdown(f"**Actual values (first 10):** `{y_train.head(10).tolist()}`")
+
+
+
+# import the evaluation metric: Mean Absolute Error (MAE)
+from sklearn.metrics import mean_absolute_error
+
+# calculate MAE between predicted and actual house prices
+train_mae = mean_absolute_error(train_pred, y_train)
+
+# print the training error to the console (for debugging/logging)
+st.markdown(f"Train error is: `{train_mae}`")
+
+# display the model's coefficients
+st.markdown(f"""
+            Learned coefficients (weights) of the trained model:
+            <br>
+            `{ lrmodel_coef_ }`""", unsafe_allow_html=True)
+
+
+# Our model is still not good because we need a model with Mean Absolute Error < $70,000
+# Note - We have not scaled the features and not tuned the model.
+
+# model interpretation
+# display the section title
+st.markdown("#### Model Interpretation")
+st.markdown("""
+            <ul>
+                <li>The built model's performance is not ideal yet</li>
+                <li>Goal: MAE should be below $70,000</li>
+                <li>The model features have not yet scaled and the model not tuned</li>
+            </ul>
+            """, unsafe_allow_html=True)
+
+# display subheader
+st.subheader("How Each Feature Affects Price")
+
+# get column names (input features)
+column_names = x_train.columns
+
+# get learned coefficients from the model
+lrmodel_coef = lrmodel.coef_
+
+# create a DataFrame matching each feature name with its coefficient
+coefficients_df = pd.DataFrame({
+    'Feature': column_names,
+    'Coefficient': lrmodel_coef
+})
+
+# Display the result in Streamlit
+st.markdown("##### Feature Coefficients")
+st.dataframe(coefficients_df)
