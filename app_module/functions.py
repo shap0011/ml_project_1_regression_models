@@ -13,20 +13,27 @@ def load_data(filepath):
 
 def train_linear_regression(x_train, y_train):
     """Train a Linear Regression model."""
+    # create an instance of the LinearRegression model
     model = LinearRegression()
+    # fit the model using the training data (input features and target)
     model.fit(x_train, y_train)
     return model
 
 def train_decision_tree(x_train, y_train):
     """Train a Decision Tree Regressor."""
+     # create an instance of the DecisionTreeRegressor
     dt = DecisionTreeRegressor(max_depth=3, max_features=10, random_state=567)
+    # fit the model using the training data (input features and target)
     dt.fit(x_train, y_train)
     return dt
 
 def evaluate_model(model, x, y, dataset_name="Dataset"):
     """Evaluate a model and return MAE."""
+    # make predictions using the train or test set
     y_pred = model.predict(x)
+    # evaluate the model and assign to 'mae' variable
     mae = mean_absolute_error(y, y_pred)
+    # display result
     st.write(f"MAE ({dataset_name}): `{mae}`")
     return mae
 
