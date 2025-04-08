@@ -1,6 +1,15 @@
 import pandas as pd
 from app_module import functions as func
 import streamlit as st
+import logging
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+logging.info("This is a test log message")
+
 
 
 # set the title of the Streamlit app
@@ -11,7 +20,16 @@ st.markdown("""<h1 style='color: #94cbe1;'>Project 1. Regression Models</h1>
 # add subheader
 st.subheader("Data preview")
 # load the dataset from a CSV file located in the 'data' folder
-df = func.load_data('data/final.csv')
+try:
+    df = func.load_data('data/final.csv')
+    logging.info("Dataset loaded successfully!")
+except FileNotFoundError as e:
+    logging.error(f"File not found: {e}")
+    st.error("Dataset file not found. Please check the 'data/final.csv' path.")
+except Exception as e:
+    logging.error(f"Error loading dataset: {e}")
+    st.error("An unexpected error occurred while loading the dataset.")
+
 
 # display the first five rows of the dataset in the app
 st.write('The dataset is loaded. The first five and last five records displayed below:')
@@ -145,7 +163,14 @@ st.markdown(f"Dimensions of target variable for testing `y_test`: {y_test_shape}
 st.markdown("##### Train the Linear Regression Model")
 
 # Train model
-lrmodel = func.train_linear_regression(x_train, y_train)
+# lrmodel = func.train_linear_regression(x_train, y_train)
+try:
+    lrmodel = func.train_linear_regression(x_train, y_train)
+    logging.info("Linear Regression model trained successfully.")
+except Exception as e:
+    logging.error(f"Failed to train Linear Regression model: {e}")
+    st.error("Error training Linear Regression model.")
+
 
 # Access the learned coefficients (weights) of the trained model
 lrmodel_coef_ = lrmodel.coef_
@@ -240,8 +265,21 @@ st.subheader("Decision Tree Model")
 from sklearn.tree import DecisionTreeRegressor
 
 # Train models
-lrmodel = func.train_linear_regression(x_train, y_train)
+# lrmodel = func.train_linear_regression(x_train, y_train)
+try:
+    lrmodel = func.train_linear_regression(x_train, y_train)
+    logging.info("Linear Regression model trained successfully.")
+except Exception as e:
+    logging.error(f"Failed to train Linear Regression model: {e}")
+    st.error("Error training Linear Regression model.")
+
 dtmodel = func.train_decision_tree(x_train, y_train)
+try:
+    dtmodel = func.train_decision_tree(x_train, y_train)
+    logging.info("Decision Tree Regression model trained successfully.")
+except Exception as e:
+    logging.error(f"Failed to train Decision Tree Regression model: {e}")
+    st.error("Error training Decision Tree Regression model.")
 
 # Predict and evaluate with lrmodel
 st.write("Linear Regression Model:")
@@ -330,10 +368,20 @@ st.markdown("""
 import pickle
 
 # Save the trained model on the drive
-pickle.dump(dtmodel, open('RE_Model','wb'))
+try:
+    pickle.dump(dtmodel, open('RE_Model', 'wb'))
+    logging.info("Model saved (pickled) successfully.")
+except Exception as e:
+    logging.error(f"Error saving model: {e}")
+    st.error("Error saving the model.")
 
 # Load the pickled model
-RE_Model = pickle.load(open('RE_Model','rb'))
+try:
+    RE_Model = pickle.load(open('RE_Model', 'rb'))
+    logging.info("Model loaded (unpickled) successfully.")
+except Exception as e:
+    logging.error(f"Error loading model: {e}")
+    st.error("Error loading the model.")
 
 # Use the loaded pickled model to make predictions
 RE_Model.predict([[2012, 216, 74, 1, 1, 618, 2000, 600, 1, 0, 0, 6, 0, 1]])
