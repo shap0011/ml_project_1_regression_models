@@ -245,3 +245,96 @@ coefficients_df = pd.DataFrame({
 # Display the result in Streamlit
 st.markdown("##### Feature Coefficients")
 st.dataframe(coefficients_df)
+
+# display subheader
+st.subheader("Decision Tree Model")
+
+# import decision tree model
+from sklearn.tree import DecisionTreeRegressor
+
+# create an instance of the class
+dt = DecisionTreeRegressor(max_depth=3, max_features=10, random_state=567)
+
+st.write("Make prediction using the train set and evaluate the model:")
+# train the model
+dtmodel = dt.fit(x_train,y_train)
+
+# make predictions using the test set
+ytrain_pred = dtmodel.predict(x_train)
+
+# evaluate the model
+train_mae = mean_absolute_error(ytrain_pred, y_train)
+st.write(f"MAE (x_train set): `{train_mae}`")
+
+st.write("Make prediction using the test set and evaluate the model:")
+# make predictions using the test set
+ytest_pred = dtmodel.predict(x_test)
+
+# evaluate the model
+test_mae = mean_absolute_error(ytest_pred, y_test)
+st.write(f"MAE (x_test set): `{test_mae}`")
+
+# display subheader
+st.subheader("How do I know if my model is Overfitting or Generalized?")
+
+# make predictions on train set
+ytrain_pred = dtmodel.predict(x_train)
+
+# import mean absolute error metric
+from sklearn.metrics import mean_absolute_error
+
+# evaluate the model
+train_mae = mean_absolute_error(ytrain_pred, y_train)
+st.write(f"MAE (x_train set): `{train_mae}`")
+
+# display subheader
+st.subheader("Plot the tree")
+st.write("Get the features")
+
+# get the features
+features = dtmodel.feature_names_in_
+# st.write(", ".join(map(str, features)))
+st.markdown("<br>".join(map(str, features)), unsafe_allow_html=True)
+
+# display subheader
+st.subheader("Plot the tree")
+
+# plot the tree
+import matplotlib.pyplot as plt
+from sklearn import tree
+
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(30, 10))  # Optional: control figure size
+
+# Plot the tree
+tree.plot_tree(dtmodel, feature_names=dtmodel.feature_names_in_, filled=True, rounded=True, fontsize=10, ax=ax)
+
+# Show the plot in Streamlit
+st.write("Decision Tree Visualization")
+st.pyplot(fig)
+
+# Save the plot to a file
+plt.savefig('tree.png', dpi=300)
+
+# display subheader
+st.subheader("Random Forest Model")
+
+# import decision tree model
+from sklearn.ensemble import RandomForestRegressor
+
+# create an instance of the model
+rf = RandomForestRegressor(n_estimators=200, criterion='absolute_error')
+
+# train the model
+rfmodel = rf.fit(x_train,y_train)
+
+# make prediction on train set
+ytrain_pred = rfmodel.predict(x_train)
+
+# make predictions on the x_test values
+ytest_pred = rfmodel.predict(x_test)
+
+# evaluate the model
+test_mae = mean_absolute_error(ytest_pred, y_test)
+st.write(f"MAE (x_test set): `{test_mae}`")
+ 

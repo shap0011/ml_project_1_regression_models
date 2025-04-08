@@ -7,7 +7,7 @@
 
 [theme]
 primaryColor = "#d0e8f2" # light cyan
-backgroundColor = "#fcf8ec" # beige
+backgroundColor = "#fffefd" # extra light beige
 secondaryBackgroundColor = "#e4f2f8" # dark cyan
 textColor = "#000" # black
 font = "sans serif"
