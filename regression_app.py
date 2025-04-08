@@ -337,4 +337,31 @@ ytest_pred = rfmodel.predict(x_test)
 # evaluate the model
 test_mae = mean_absolute_error(ytest_pred, y_test)
 st.write(f"MAE (x_test set): `{test_mae}`")
- 
+
+ # display subheader
+st.subheader("Pickle:")
+st.markdown("""
+- The pickle module implements a powerful algorithm for serializing and de-serializing a Python object structure.
+- The saving of data is called Serialization, and loading the data is called De-serialization.
+
+**Pickle module provides the following functions:**
+
+- **pickle.dump** to serialize an object hierarchy, you simply use `dump()`.
+- **pickle.load** to deserialize a data stream, you call the `load()` function.
+""")
+
+# import pickle to save model
+import pickle
+
+# Save the trained model on the drive
+pickle.dump(dtmodel, open('RE_Model','wb'))
+
+# Load the pickled model
+RE_Model = pickle.load(open('RE_Model','rb'))
+
+# Use the loaded pickled model to make predictions
+RE_Model.predict([[2012, 216, 74, 1, 1, 618, 2000, 600, 1, 0, 0, 6, 0, 1]])
+
+st.write("Use the loaded pickled model to make predictions")
+x_test_head_1 = x_test.head(1)
+st.dataframe(x_test_head_1)
