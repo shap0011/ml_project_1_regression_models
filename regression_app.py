@@ -23,6 +23,7 @@ st.subheader("Data preview")
 try:
     df = func.load_data('data/final.csv')
     logging.info("Dataset loaded successfully!")
+    logging.warning("[INFO] Dataset loaded successfully.") # for the Streamlit web app
 except FileNotFoundError as e:
     logging.error(f"File not found: {e}")
     st.error("Dataset file not found. Please check the 'data/final.csv' path.")
