@@ -1,11 +1,6 @@
-# import Streamlit for building web app
-import streamlit as st
-# import pandas for data manipulation
 import pandas as pd
-#import numpy as np for numerical computing
-import numpy as np
-import sklearn
-
+from app_module import functions as func
+import streamlit as st
 
 
 # set the title of the Streamlit app
@@ -18,7 +13,7 @@ st.markdown("""<h1 style='color: #94cbe1;'>Project 1. Regression Models</h1>
 # add subheader
 st.subheader("Data preview")
 # load the dataset from a CSV file located in the 'data' folder
-df = pd.read_csv('data/final.csv')
+df = func.load_data('data/final.csv')
 
 # display the first five rows of the dataset in the app
 st.write('The dataset is loaded. The first five and last five records displayed below:')
@@ -152,9 +147,11 @@ st.markdown(f"Dimensions of target variable for testing `y_test`: {y_test_shape}
 st.markdown("##### Train the Linear Regression Model")
 
 # create an instance of the LinearRegression model
-model = LinearRegression()
-# fit the model using the training data (input features and target)
-lrmodel = model.fit(x_train, y_train)
+# model = LinearRegression()
+# # fit the model using the training data (input features and target)
+# lrmodel = model.fit(x_train, y_train)
+# Train model
+lrmodel = func.train_linear_regression(x_train, y_train)
 
 # Access the learned coefficients (weights) of the trained model
 lrmodel_coef_ = lrmodel.coef_
@@ -252,27 +249,61 @@ st.subheader("Decision Tree Model")
 # import decision tree model
 from sklearn.tree import DecisionTreeRegressor
 
-# create an instance of the class
-dt = DecisionTreeRegressor(max_depth=3, max_features=10, random_state=567)
+# # create an instance of the class
+# dt = DecisionTreeRegressor(max_depth=3, max_features=10, random_state=567)
+# # train the model
+# dtmodel = dt.fit(x_train,y_train)
+# # Train model
+# lrmodel = func.train_linear_regression(x_train, y_train)
 
-st.write("Make prediction using the train set and evaluate the model:")
-# train the model
-dtmodel = dt.fit(x_train,y_train)
+# st.write("Make prediction using the train set and evaluate the model:")
 
-# make predictions using the test set
-ytrain_pred = dtmodel.predict(x_train)
+# # make predictions using the training set
+# ytrain_pred = lrmodel.predict(x_train)
 
-# evaluate the model
-train_mae = mean_absolute_error(ytrain_pred, y_train)
-st.write(f"MAE (x_train set): `{train_mae}`")
 
-st.write("Make prediction using the test set and evaluate the model:")
-# make predictions using the test set
-ytest_pred = dtmodel.predict(x_test)
+# # evaluate the model
+# train_mae = mean_absolute_error(ytrain_pred, y_train)
+# st.write(f"MAE (x_train set): `{train_mae}`")
 
-# evaluate the model
-test_mae = mean_absolute_error(ytest_pred, y_test)
-st.write(f"MAE (x_test set): `{test_mae}`")
+# st.write("Make prediction using the test set and evaluate the model:")
+# # make predictions using the test set
+# ytest_pred = dtmodel.predict(x_test)
+
+# # evaluate the model
+# test_mae = mean_absolute_error(ytest_pred, y_test)
+# st.write(f"MAE (x_test set): `{test_mae}`")
+
+# Train models
+lrmodel = func.train_linear_regression(x_train, y_train)
+dtmodel = func.train_decision_tree(x_train, y_train)
+
+# Predict and evaluate with lrmodel
+st.write("Linear Regression Model:")
+# ytrain_pred = lrmodel.predict(x_train)
+# train_mae = mean_absolute_error(ytrain_pred, y_train)
+# st.write(f"MAE (x_train set): `{train_mae}`")
+# Evaluate on train set
+train_mae = func.evaluate_model(lrmodel, x_train, y_train, dataset_name="Training Set")
+
+# ytest_pred = lrmodel.predict(x_test)
+# test_mae = mean_absolute_error(ytest_pred, y_test)
+# st.write(f"MAE (x_test set): `{test_mae}`")
+# Evaluate on test set
+test_mae = func.evaluate_model(lrmodel, x_test, y_test, dataset_name="Test Set")
+
+# Predict and evaluate with dtmodel
+st.write("Decision Tree Model:")
+# ytrain_pred_dt = dtmodel.predict(x_train)
+# train_mae_dt = mean_absolute_error(ytrain_pred_dt, y_train)
+# st.write(f"Decision Tree MAE (x_train set): `{train_mae_dt}`")
+train_mae_dt = func.evaluate_model(dtmodel, x_train, y_train, dataset_name="Training Set (Decision Tree)")
+
+# ytest_pred_dt = dtmodel.predict(x_test)
+# test_mae_dt = mean_absolute_error(ytest_pred_dt, y_test)
+# st.write(f"Decision Tree MAE (x_test set): `{test_mae_dt}`")
+test_mae_dt = func.evaluate_model(dtmodel, x_test, y_test, dataset_name="Test Set (Decision Tree)")
+
 
 # display subheader
 st.subheader("How do I know if my model is Overfitting or Generalized?")
@@ -303,18 +334,22 @@ st.subheader("Plot the tree")
 import matplotlib.pyplot as plt
 from sklearn import tree
 
-# Create a figure and axis
-fig, ax = plt.subplots(figsize=(30, 10))  # Optional: control figure size
-
-# Plot the tree
-tree.plot_tree(dtmodel, feature_names=dtmodel.feature_names_in_, filled=True, rounded=True, fontsize=10, ax=ax)
-
 # Show the plot in Streamlit
 st.write("Decision Tree Visualization")
-st.pyplot(fig)
 
-# Save the plot to a file
-plt.savefig('tree.png', dpi=300)
+# # Create a figure and axis
+# fig, ax = plt.subplots(figsize=(30, 10))  # Optional: control figure size
+
+# # Plot the tree
+# tree.plot_tree(dtmodel, feature_names=dtmodel.feature_names_in_, filled=True, rounded=True, fontsize=10, ax=ax)
+
+# st.pyplot(fig)
+
+# # Save the plot to a file
+# plt.savefig('tree.png', dpi=300)
+
+# Plot decision tree
+fig = func.plot_tree_model(dtmodel, dtmodel.feature_names_in_)
 
 # display subheader
 st.subheader("Random Forest Model")
