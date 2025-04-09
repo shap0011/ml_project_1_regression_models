@@ -91,3 +91,9 @@ GitHub: [\[Olga Durham GitHub Link\]](https://github.com/shap0011)
 ## GitHub Codespaces
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://refactored-space-tribble-5rv6wwwgx74cv75p.github.dev/)
+
+## License
+
+This project is licensed under the MIT License.  
+Feel free to use, modify, and share it.  
+See the [LICENSE](./LICENSE) file for details.
