@@ -26,7 +26,18 @@ The application is designed for educational purposes and demonstrates a full mac
 
 ## Project Structure
 
-ml_project_1_regression_models/ │ ├── .streamlit/ │ └── config.toml # app theme settings │ ├── data/ │ └── final.csv # Input dataset (house prices) │ ├── app_module/ │ ├── init.py # Makes app_module a Python package │ ├── functions.py # Helper functions (load data, train models, plot tree, evaluate models) │ ├── regression_app.py # Main Streamlit app ├── README.md # Project documentation (this file) ├── requirements.txt # Python dependencies └── RE_Model # Pickled trained model (saved Decision Tree)
+- **.streamlit/**
+  - `config.toml` — Theme setting
+- `regression_app.py` — Main Streamlit app
+- **app_module/**
+  - `__init__.py`
+  - `functions.py` — All helper functions
+- **data/**
+  - `final.csv` — Raw dataset
+- `RE_Model` — Pickled trained model (saved Decision Tree)
+- `requirements.txt` — List of Python dependencies
+- `README.md` — Project documentation
+- `tree.png` — Saved image
 
 ## How to Run the App Locally
 
