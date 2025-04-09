@@ -1,3 +1,14 @@
+import os
+os.environ['STREAMLIT_LOG_LEVEL'] = 'debug'
+
+import logging
+
+# Configure logging manually again
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression

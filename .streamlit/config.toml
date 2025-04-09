@@ -12,3 +12,7 @@ secondaryBackgroundColor = "#e4f2f8" # dark cyan
 textColor = "#000" # black
 font = "sans serif"
 
+[logger]
+level = "debug"
+
+
