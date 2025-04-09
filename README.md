@@ -59,11 +59,11 @@ streamlit run regression_app.py
 
 4. Open the URL shown (usually http://localhost:8501) to view the app in your browser!
 
-5. **Deployment**
+## Deployment
 The app is also deployed on Streamlit Cloud.
 Click [![Here](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://shap0011-ml-project-1-regression-models-regression-app-bmqmxq.streamlit.app/) to view the live app.
 
-6. **Model Details**
+## Model Details
 
 | Model                   | Description                        |
 |--------------------------|------------------------------------|
@@ -73,7 +73,7 @@ Click [![Here](https://static.streamlit.io/badges/streamlit_badge_black_white.sv
 
 Evaluation metric used: **Mean Absolute Error (MAE)**
 
-7.  **Logging and Error Handling**
+## Logging and Error Handling
 
 Backend logging is enabled using Python’s logging module.
 
