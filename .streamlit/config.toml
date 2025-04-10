@@ -11,8 +11,9 @@ backgroundColor = "#fffefd" # extra light beige
 secondaryBackgroundColor = "#e4f2f8" # dark cyan
 textColor = "#000" # black
 font = "sans serif"
+baseFontSize = 18  
 
 [logger]
-level = "debug"
+level = "info
 
 
