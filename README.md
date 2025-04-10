@@ -61,7 +61,7 @@ streamlit run regression_app.py
 
 ## Deployment
 The app is also deployed on Streamlit Cloud.
-Click [![Here](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://shap0011-ml-project-1-regression-models-regression-app-bmqmxq.streamlit.app/) to view the live app.
+Click [![Here](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://e2othrmbzcuwh77r4hgvkk.streamlit.app/) to view the live app.
 
 ## Model Details
 
