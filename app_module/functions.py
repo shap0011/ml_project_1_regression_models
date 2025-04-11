@@ -52,5 +52,5 @@ def plot_tree_model(model, feature_names):
     """Plot and display a decision tree."""
     fig, ax = plt.subplots(figsize=(30, 10))
     tree.plot_tree(model, feature_names=feature_names, filled=True, rounded=True, fontsize=10, ax=ax)
-    # st.pyplot(fig)
+    st.pyplot(fig)
     fig.savefig('tree.png', dpi=300)

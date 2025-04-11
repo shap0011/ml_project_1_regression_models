@@ -81,8 +81,8 @@ try:
     #-------- the linear regression model ---------------------
     
     # create variables for rows and columns counts
-    rows_count = df.shape[0]
-    columns_count = df.shape[1]
+    # rows_count = df.shape[0]
+    # columns_count = df.shape[1]
     # display dataset shape
     # st.markdown(f"""
     #             The dataset contains:
@@ -139,7 +139,7 @@ try:
     from sklearn.model_selection import train_test_split
 
     # create two columns side by side in the Streamlit layout
-    col1, col2 = st.columns(2)
+    # col1, col2 = st.columns(2)
 
     # first attempt: split the data randomly (20% test, 80% train)
     x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.2)
@@ -188,13 +188,13 @@ try:
 
     # get the shape (row count, column count) of each dataset
     # input features for training
-    x_train_shape = x_train.shape
-    # target variable for training
-    y_train_shape = y_train.shape
-    # input features for testing
-    x_test_shape = x_test.shape
-    # target variable for testing
-    y_test_shape = y_test.shape
+    # x_train_shape = x_train.shape
+    # # target variable for training
+    # y_train_shape = y_train.shape
+    # # input features for testing
+    # x_test_shape = x_test.shape
+    # # target variable for testing
+    # y_test_shape = y_test.shape
 
     # st.markdown(f"Dimensions of input features for training `x_train`: {x_train_shape}")
     # st.markdown(f"Dimensions of target variable for training `y_train`: {y_train_shape}")
@@ -288,16 +288,16 @@ try:
     # st.subheader("How Each Feature Affects Price")
 
     # get column names (input features)
-    column_names = x_train.columns
+    # column_names = x_train.columns
 
     # get learned coefficients from the model
-    lrmodel_coef = lrmodel.coef_
+    # lrmodel_coef = lrmodel.coef_
 
     # create a DataFrame matching each feature name with its coefficient
-    coefficients_df = pd.DataFrame({
-        'Feature': column_names,
-        'Coefficient': lrmodel_coef
-    })
+    # coefficients_df = pd.DataFrame({
+    #     'Feature': column_names,
+    #     'Coefficient': lrmodel_coef
+    # })
 
     # Display the result in Streamlit
     # st.markdown("##### Feature Coefficients")
@@ -364,7 +364,7 @@ try:
     # st.write("Get the features")
 
     # get the features
-    features = dtmodel.feature_names_in_
+    # features = dtmodel.feature_names_in_
     # st.write(", ".join(map(str, features)))
     # st.markdown("<br>".join(map(str, features)), unsafe_allow_html=True)
 
@@ -379,7 +379,7 @@ try:
     # st.write("Decision Tree Visualization")
 
     # Plot decision tree
-    fig = func.plot_tree_model(dtmodel, dtmodel.feature_names_in_)
+    # fig = func.plot_tree_model(dtmodel, dtmodel.feature_names_in_)
 
     #-------- Random Forest Model ---------------------
 
@@ -442,7 +442,7 @@ try:
     RE_Model.predict([[2012, 216, 74, 1, 1, 618, 2000, 600, 1, 0, 0, 6, 0, 1]])
 
     # st.write("Use the loaded pickled model to make predictions")
-    x_test_head_1 = x_test.head(1)
+    # x_test_head_1 = x_test.head(1)
     # st.dataframe(x_test_head_1)
     
     #-------- User Input Form for Predicting House Price ---------------------
