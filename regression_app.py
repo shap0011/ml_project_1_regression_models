@@ -47,10 +47,10 @@ try:
     Welcome to the **House Price Prediction App**!
 
     This web application allows users to:
-    - Explore a real estate dataset 📄
-    - Understand the relationship between house features and prices 🏠
-    - Train and evaluate different machine learning models (Linear Regression, Decision Tree, Random Forest) 🤖
-    - **Predict** house prices based on customizable property features 🎯
+    - Explore a real estate dataset 
+    - Understand the relationship between house features and prices 
+    - Train and evaluate different machine learning models (Linear Regression, Decision Tree, Random Forest) 
+    - **Predict** house prices based on customizable property features 
     """)
     
     #-------- user instructions -------------------------------
@@ -240,14 +240,13 @@ try:
 
         submit_button = st.form_submit_button(label="Predict House Price")
 
-    # 🔥 Move this inside submit_button
     if submit_button:
         try:
             # Calculate property age dynamically after user input
             property_age = year_sold - year_built
 
             # Display the calculated property age
-            st.markdown(f"🧮 Property Age (calculated): **{property_age}** years")
+            st.markdown(f"Property Age (calculated): **{property_age}** years")
 
             # Create the DataFrame for prediction
             user_input = pd.DataFrame([[
