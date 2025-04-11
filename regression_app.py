@@ -14,7 +14,7 @@ import pandas as pd
 import pickle
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_absolute_error   # ✅ ADD THIS
+from sklearn.metrics import mean_absolute_error 
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
@@ -124,10 +124,7 @@ try:
 
     # calculate MAE between predicted and actual house prices
     train_mae = mean_absolute_error(train_pred, y_train)
-
-    #-------- How Each Feature Affects Price ---------------------
-
-    
+  
     #-------- Decision Tree Model ---------------------
 
     # Train models
@@ -165,9 +162,6 @@ try:
     # evaluate the model
     train_mae = mean_absolute_error(ytrain_pred, y_train)
     # st.write(f"MAE (x_train set): `{train_mae}`")
-
-    #-------- Plot the tree ---------------------
-
 
     #-------- Random Forest Model ---------------------
 

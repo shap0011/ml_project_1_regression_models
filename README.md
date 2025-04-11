@@ -1,7 +1,6 @@
-# Project 1: Regression Models (Streamlit App)
+# House Price Prediction App
 
-This project is a **Streamlit web application** that builds and evaluates several **machine learning regression models** to predict **house prices**.  
-The application is designed for educational purposes and demonstrates a full machine learning workflow: from loading data to training, evaluating, visualizing models, and saving them.
+This project is a **Streamlit web application** that builds and evaluates several **machine learning regression models** to predict **house prices**.
 
 ## Features
 
@@ -10,7 +9,6 @@ The application is designed for educational purposes and demonstrates a full mac
 - Train a **Decision Tree Regressor**
 - Train a **Random Forest Regressor**
 - Evaluate models using **Mean Absolute Error (MAE)**
-- Plot the trained **Decision Tree**
 - Save and load a trained model using **Pickle**
 - Display logs and error messages clearly
 - Modularized code with reusable functions
@@ -36,7 +34,6 @@ The application is designed for educational purposes and demonstrates a full mac
 - `RE_Model` — Pickled trained model (saved Decision Tree)
 - `requirements.txt` — List of Python dependencies
 - `README.md` — Project documentation
-- `tree.png` — Saved image
 
 ## How to Run the App Locally
 
