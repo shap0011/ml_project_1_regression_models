@@ -36,7 +36,7 @@ try:
     #-------- page setting, header, intro ---------------------
       
     # Set page configuration
-    st.set_page_config(page_title="🏡 House Price Prediction App", layout="wide")
+    st.set_page_config(page_title="🏡 House Price Prediction App", layout="centered")
     # set the title of the Streamlit app    
     st.markdown("<h1 style='color: #3498db;'>🏡 House Price Prediction App</h1>", unsafe_allow_html=True)
     
