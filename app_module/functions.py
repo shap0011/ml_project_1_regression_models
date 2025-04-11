@@ -10,9 +10,7 @@ logging.basicConfig(
 )
 
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor, plot_tree
 from sklearn.metrics import mean_absolute_error
 from sklearn import tree
 import streamlit as st
