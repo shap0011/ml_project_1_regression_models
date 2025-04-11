@@ -61,15 +61,15 @@ streamlit run regression_app.py
 
 ## Deployment
 The app is also deployed on Streamlit Cloud.
-Click [![Here](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://e2othrmbzcuwh77r4hgvkk.streamlit.app/) to view the live app.
+Click [![Here](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://home-price-prediction-app-shap0011.streamlit.app/) to view the live app.
 
 ## Model Details
 
-| Model                   | Description                        |
+| Model                    | Description                        |
 |--------------------------|------------------------------------|
-| Linear Regression        | Baseline regression model         |
-| Decision Tree Regressor  | Tree-based regression model       |
-| Random Forest Regressor  | Ensemble of Decision Trees        |
+| Linear Regression        | Baseline regression model          |
+| Decision Tree Regressor  | Tree-based regression model        |
+| Random Forest Regressor  | Ensemble of Decision Trees         |
 
 Evaluation metric used: **Mean Absolute Error (MAE)**
 
