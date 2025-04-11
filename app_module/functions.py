@@ -45,12 +45,12 @@ def evaluate_model(model, x, y, dataset_name="Dataset"):
     # evaluate the model and assign to 'mae' variable
     mae = mean_absolute_error(y, y_pred)
     # display result
-    st.write(f"MAE ({dataset_name}): `{mae}`")
+    # st.write(f"MAE ({dataset_name}): `{mae}`")
     return mae
 
 def plot_tree_model(model, feature_names):
     """Plot and display a decision tree."""
     fig, ax = plt.subplots(figsize=(30, 10))
     tree.plot_tree(model, feature_names=feature_names, filled=True, rounded=True, fontsize=10, ax=ax)
-    st.pyplot(fig)
+    # st.pyplot(fig)
     fig.savefig('tree.png', dpi=300)
