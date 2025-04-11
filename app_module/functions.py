@@ -11,6 +11,7 @@ logging.basicConfig(
 
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn import tree
 import streamlit as st

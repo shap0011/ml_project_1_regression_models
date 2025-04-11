@@ -20,7 +20,6 @@ The application is designed for educational purposes and demonstrates a full mac
 - [Streamlit](https://streamlit.io/) - For building the interactive web app
 - [Scikit-learn](https://scikit-learn.org/) - For machine learning models
 - [Pandas](https://pandas.pydata.org/) - For data manipulation
-- [Matplotlib](https://matplotlib.org/) - For plotting the decision tree
 - [Pickle](https://docs.python.org/3/library/pickle.html) - For saving and loading models
 - [Logging](https://docs.python.org/3/library/logging.html) - For backend log management
 
